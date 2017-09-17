@@ -48,6 +48,19 @@ namespace CustomerRestAPI
                         LastName = "Lichman",
                         Address = "Dungeon"
                     });
+                facade.CustomerService.Create(
+                    new CustomerBO()
+                    {
+                        FirstName = "Dracula",
+                        LastName = "Vampiresen",
+                        Address = "Dungeon"
+                    });
+                facade.OrderService.Create(
+                    new OrderBO()
+                    {
+                        DeliveryDate = DateTime.Now.AddMonths(1),
+                        OrderDate = DateTime.Now.AddMonths(-1)
+                    });
             }
 
             app.UseMvc();
