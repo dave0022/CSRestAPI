@@ -5,7 +5,7 @@ using System.Text;
 
 namespace CustomerAppDAL
 {
-    interface IOrderRepository
+    public interface IOrderRepository
     {
         //C
         Order Create(Order cust);
