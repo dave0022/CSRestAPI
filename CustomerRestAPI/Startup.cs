@@ -55,13 +55,16 @@ namespace CustomerRestAPI
                         LastName = "Vampiresen",
                         Address = "Dungeon"
                     });
-                facade.OrderService.Create(
-                    new OrderBO()
-                    {
-                        DeliveryDate = DateTime.Now.AddMonths(1),
-                        OrderDate = DateTime.Now.AddMonths(-1),
-                        Customer = cust
-                    });
+                for (int i = 0; i < 50; i++)
+                {
+                    facade.OrderService.Create(
+                        new OrderBO()
+                        {
+                            DeliveryDate = DateTime.Now.AddMonths(1),
+                            OrderDate = DateTime.Now.AddMonths(-1),
+                            CustomerId = cust.Id
+                        });
+                }
             }
 
             app.UseMvc();

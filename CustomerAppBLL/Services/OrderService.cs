@@ -42,6 +42,7 @@ namespace CustomerAppBLL.Services
             using (var uow = _facade.UnitOfWork)
             {
                 var orderEntity = uow.OrderRepository.Get(Id);
+                orderEntity.Customer = uow.CustomerRepository.Get(orderEntity.CustomerId);
                 return conv.Convert(orderEntity);
             }
         }
@@ -66,7 +67,9 @@ namespace CustomerAppBLL.Services
                 }
                 orderEntity.DeliveryDate = order.DeliveryDate;
                 orderEntity.OrderDate = order.OrderDate;
+                orderEntity.CustomerId = order.CustomerId;
                 uow.Complete();
+                orderEntity.Customer = uow.CustomerRepository.Get(orderEntity.CustomerId);
                 return conv.Convert(orderEntity);
                 
             }

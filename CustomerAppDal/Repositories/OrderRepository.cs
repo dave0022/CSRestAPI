@@ -18,10 +18,7 @@ namespace CustomerAppDAL.Repositories
         public Order Create(Order order)
         {
 
-            if(order.Customer != null)
-            {
-                _context.Entry(order.Customer).State = EntityState.Unchanged;
-            }
+           
             _context.Orders.Add(order);
             return order;
         }
@@ -40,7 +37,7 @@ namespace CustomerAppDAL.Repositories
 
         public List<Order> GetAll()
         {
-            return _context.Orders.Include(o => o.Customer). ToList();
+            return _context.Orders.ToList();
         }
     }
 }
